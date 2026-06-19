@@ -38,10 +38,58 @@ class Solution:
             count+=1
         return -1   
     
-    def insertll(self, data, head):
+    def insertatbeg(self, data, head):
         new_node = Node(data)
         new_node.next = head
         return new_node
+    
+    def insertatend(self, data, head):
+        new_node = Node(data)
+        if head is None:
+            return new_node
+        curr = head
+        while curr.next:
+            curr = curr.next
+        curr.next = new_node
+        return head
+    
+    
+    def insertatpos(self, data, pos, head):
+        new_node = Node(data)
+        if pos ==0:
+            new_node.next = head
+            return new_node
+        curr = head
+        for i in range(pos-1):
+            curr = curr.next
+        new_node.next = curr.next
+        curr.next = new_node
+        return head
+
+    
+    def deletefr(self, head):
+        if head is None:
+            return None
+        return head.next
+        
+    def deletelast(self, head):
+        if head is None or head.next is None:
+            return None
+        curr = head
+        while curr.next.next:
+            curr = curr.next
+        curr.next = None
+        return head
+
+    def deleteatpos(self, pos, head):
+        if pos == 0:
+            return self.deletefr(head)
+        curr = head
+        for i in range(pos-1):
+            curr = curr.next
+        curr.next = curr.next.next
+        return head
+        
 
     
 ll = Node(10)
