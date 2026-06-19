@@ -12,9 +12,17 @@ class Solution:
             ele.append(curr.data)
             curr = curr.next
         return ele
+    def countll(self, head:Node)-> str:
+        count = 0
+        curr = head 
+        while curr:
+            count +=1
+            curr = curr.next
+        return count
 
 ll = Node(10)
 ll.next = Node(20)
 ll.next.next = Node(30)
 sol = Solution()
 print(sol.traverse(ll))
+print(sol.countll(ll))
